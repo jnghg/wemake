@@ -2,28 +2,34 @@ import { Link, type MetaFunction } from "react-router";
 
 import { ProductCard } from "~/features/products/components/product-card";
 import { Button } from "../components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
+
 import { PostCard } from "~/features/community/components/post-card";
 import { IdeaCard } from "~/features/ideas/components/idea-card";
 import { JobCard } from "~/features/jobs/components/job-card";
-import { Badge } from "../components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { TeamCard } from "~/features/teams/components/team-card";
+import type { Route } from "./+types/home-page";
 
-export const meta: MetaFunction = ({ matches }) => {
+export const meta: MetaFunction = () => {
   return [
-    { title: "Home | WeMake" },
-    { name: "description", content: "Welcome to WeMake" },
+    { title: "홈 | Product Hunt Korea" },
+    { name: "description", content: "한국의 혁신적인 제품들을 발견하세요" },
   ];
 };
+/** server side data fetching */
+export function loader({ request }: Route.LoaderArgs) {
+  return {
+    featuredProducts: [],
+  };
+}
 
-export default function HomePage() {
+/** loader 함수에서 리턴되는 데이터는 loaderData 프로퍼티에 전달된다. */
+export function action({ request }: Route.ActionArgs) {
+  return {};
+}
+
+export default function HomePage({ loaderData }: Route.ComponentProps) {
+  const { featuredProducts } = loaderData;
+
   return (
     <div className="px-20 space-y-40">
       <div className="grid grid-cols-3 gap-4">
