@@ -31,6 +31,10 @@ export default [
         "/weekly/:year/:week",
         "features/products/pages/weekly-leaderboard-page.tsx"
       ),
+      route(
+        "/:period",
+        "features/products/pages/leaderboard-redirection-page.tsx"
+      ),
     ]),
     /** 상품 > 카테고리 */
     ...prefix("categories", [
