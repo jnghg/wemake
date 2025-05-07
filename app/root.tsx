@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import Navigation from "./common/components/\bnavigation";
+import Navigation from "./common/components/navigation";
 import { Settings } from "luxon";
 
 export const links: Route.LinksFunction = () => [
