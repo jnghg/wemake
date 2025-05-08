@@ -12,10 +12,15 @@ import { ProductCard } from "../components/product-card";
 import { Button } from "~/common/components/ui/button";
 import ProductPagination from "~/common/components/product-pagination";
 
-export const meta: MetaFunction = () => {
+export const meta: MetaFunction = ({ params }) => {
+  const date = DateTime.fromObject({
+    year: Number(params.year),
+    month: Number(params.month),
+  })
+    .setZone("Asia/Seoul")
+    .setLocale("ko");
   return [
-    { title: "주간 리더보드 | Product Hunt Korea" },
-    { name: "description", content: "주간 인기 제품 순위를 확인하세요" },
+    { title: `The best of ${date.toLocaleString(DateTime.DATE_MED)} | WeMake` },
   ];
 };
 

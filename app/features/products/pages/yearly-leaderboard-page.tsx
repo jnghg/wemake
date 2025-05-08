@@ -12,10 +12,14 @@ import { ProductCard } from "../components/product-card";
 import { Button } from "~/common/components/ui/button";
 import ProductPagination from "~/common/components/product-pagination";
 
-export const meta: MetaFunction = () => {
+export const meta: MetaFunction = ({ params }) => {
+  const date = DateTime.fromObject({
+    year: Number(params.year),
+  });
   return [
-    { title: "연간 리더보드 | Product Hunt Korea" },
-    { name: "description", content: "연간 인기 제품 순위를 확인하세요" },
+    {
+      title: `The best of ${date.toLocaleString({ year: "numeric" })} | WeMake`,
+    },
   ];
 };
 
