@@ -10,6 +10,10 @@ import {
   SelectValue,
 } from "~/common/components/ui/select";
 import SelectPair from "~/common/components/select-pair";
+import { Input } from "~/common/components/ui/input";
+import { Label } from "~/common/components/ui/label";
+import { useState } from "react";
+import { Button } from "~/common/components/ui/button";
 
 export const meta: MetaFunction = () => {
   return [
@@ -19,6 +23,15 @@ export const meta: MetaFunction = () => {
 };
 
 export default function SubmitPage({ actionData }: Route.ComponentProps) {
+  const [icon, setIcon] = useState<string | null>(null);
+
+  const onChangeIcon = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const file = e.target.files[0];
+      setIcon(URL.createObjectURL(file));
+    }
+  };
+
   return (
     <div>
       <Hero title="Submit" subtitle="Share your product with the world" />
@@ -75,6 +88,42 @@ export default function SubmitPage({ actionData }: Route.ComponentProps) {
               { label: "Other", value: "other" },
             ]}
           />
+          <Button type="submit" className="w-full" size="lg">
+            Submit
+          </Button>
+        </div>
+        <div className="flex flex-col space-y-2">
+          <div className="size-40 rounded-xl shadow-xl overflow-hidden bg-white">
+            {icon ? (
+              <img src={icon} className="w-full h-full object-cover" />
+            ) : null}
+          </div>
+          <Label className="flex flex-col gap-p1">
+            Icon
+            <small className="text-muted-foreground">
+              This is the icon of your product
+            </small>
+          </Label>
+
+          <Input
+            type="file"
+            name="icon"
+            id="icon"
+            className="w-1/2"
+            onChange={onChangeIcon}
+            required
+          />
+          <div className="flex flex-col text-xs">
+            <span className="text-muted-foreground">
+              Recommended size: 128x128px
+            </span>
+            <span className="text-muted-foreground">
+              Allowed file types: PNG, JPG, SVG
+            </span>
+            <span className="text-muted-foreground">
+              Maximum file size: 1MB
+            </span>
+          </div>
         </div>
       </Form>
     </div>
