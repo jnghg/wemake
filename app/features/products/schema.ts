@@ -68,10 +68,7 @@ export const reviews = pgTable(
   {
     review_id: bigint({ mode: "number" })
       .primaryKey()
-      .generatedAlwaysAsIdentity()
-      .references(() => products.product_id, {
-        onDelete: "cascade",
-      }),
+      .generatedAlwaysAsIdentity(),
     product_id: bigint({ mode: "number" }).references(
       () => products.product_id,
       {

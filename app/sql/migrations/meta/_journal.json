@@ -50,6 +50,20 @@
       "when": 1756194652980,
       "tag": "0006_faulty_sprite",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1756259363921,
+      "tag": "0007_flat_dreadnoughts",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1756259681357,
+      "tag": "0008_reflective_baron_strucker",
+      "breakpoints": true
     }
   ]
 }
